@@ -28,7 +28,10 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span id="logo">tweeter</span>
-      <span><strong>Write</strong> a new tweet</span>
+      <div class="new-msg">
+        <span><strong>Write</strong> a new tweet</span>
+        <button type="button"><img src="/images/arrows-down.png"></button>
+      </div>
     </nav>
 
     <header class="your-account">
@@ -44,6 +47,10 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div class="error-message">
+          <img src="/images/warning.png">
+          <span><strong></strong></span>
+        </div>
         <form action="/tweets" method="POST">
           <textarea name="text" placeholder="What are you humming about?"></textarea>
           <input type="submit" value="Tweet">

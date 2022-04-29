@@ -10,6 +10,33 @@ nav {
   padding: 1.5em;
  }
 
- nav span {
+ nav #logo {
   font-family: 'Bungee', cursive, sans-serif;
  }
+
+ .new-msg {
+   height: 60px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+ }
+
+ nav button {
+  background: transparent;
+  padding: 5px;
+  display: flex;
+  border: none;
+  animation: bounce 1.2s ease infinite;
+  outline: none;
+}
+
+nav button:hover {
+  cursor: pointer;
+}
+
+@keyframes bounce{
+ 0% { transform: translateY(0px)  }
+ 50% { transform: translateY(8px) }
+ 100% { transform: translateY(0zpx) }
+}
