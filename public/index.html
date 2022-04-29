@@ -15,14 +15,15 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
-
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
@@ -30,7 +31,7 @@
       <span><strong>Write</strong> a new tweet</span>
     </nav>
 
-    <header>
+    <header class="your-account">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -48,6 +49,24 @@
           <input type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
+      </section>
+      <section>
+        <article id="tweet">
+          <header>
+            <img src="">
+            Nate Bain
+            <span class="handle">@NateBainer</span>
+          </header>
+            <div class="content">Yooooooooooo</div>
+          <footer>
+            9 days ago
+            <div class="actions">
+                <img src="/images/flag.png">
+                <img src="/images/retweet-symbol.png">
+                <img src="/images/like-symbol.png">
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>

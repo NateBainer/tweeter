@@ -1,0 +1,34 @@
+#tweet {
+  border: 4px solid #545149;
+  padding: 1em;
+}
+
+#tweet:hover {
+  box-shadow: 5px 5px lightgrey;
+}
+
+.handle {
+  visibility: hidden;
+}
+
+#tweet:hover .handle {
+  visibility: visible;
+  color: lightgrey;
+  float: right;
+}
+
+.content {
+  padding: 1.5em;
+  padding-left: 1em;
+  border-bottom: 4px solid #545149;
+}
+
+#tweet footer {
+  padding-top: 1em;
+  padding-left: 1em;
+  font-size: 18px;
+}
+
+.actions {
+  float: right;
+}
