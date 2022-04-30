@@ -3,34 +3,14 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// Test / driver code (temporary). Eventually will get this from the server.
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 const renderTweets = function(tweets) {
   return tweets.forEach(tweet => {
-    $('#tweets-container').append(createTweetElement(tweet));
+    $('#tweets-container').prepend(createTweetElement(tweet));
   });
 };
 const createTweetElement = function(tweetObj) {
@@ -44,7 +24,7 @@ const createTweetElement = function(tweetObj) {
       <span class="handle">${tweetObj.user.handle}</span>
     </header>
     <div class="content">
-        ${tweetObj.content.text}
+        ${escape(tweetObj.content.text)}
     </div>
     <footer>
       <span class="date">
@@ -60,22 +40,45 @@ const createTweetElement = function(tweetObj) {
   `;
   return element;
 };
+const loadTweets = (url, method, cb) => {
+  $.ajax({
+    url,
+    method,
+  })
+    .done(data => {
+      cb(data);
+    })
+    .fail(err => {
+      console.log('Error:', err);
+    })
+    .always(() => {
+      console.log("Tweets loaded!");
+    });
+};
+const refreshPage = () => {
+  $('textarea').val('');
+  $('.counter').text(140);
+  loadTweets("/tweets", "GET", renderTweets);
+};
 
-$(document).ready(function() {
-  renderTweets(data);
-
-  $("form").on("submit", function() {
-    event.preventDefault();
-    console.log('Performing AJAX request...');
-    const $data = $(this).serialize();
+const submitHandler = (text) => {
+  if (!text) {
+    $('.error-message').slideDown();
+    $('.error-message strong').text("Your tweet is empty");
+    return;
+  } else if (text.length > 140) {
+    return $('.error-message').slideDown().text(`Your tweet is too long: ${text.length} characters`);
+  } else {
     $.ajax({
       url: '/tweets',
       method: 'POST',
-      data: $data
+      data: {
+        text
+      }
     })
-      .done((data) => {
+      .done(() => {
         console.log('Success!');
-        console.log(data);
+        refreshPage();
       })
       .fail((err) => {
         console.log("Error:", err);
@@ -83,5 +86,26 @@ $(document).ready(function() {
       .always(() => {
         console.log("Done!");
       });
+  }
+};
+$(document).ready(function() {
+  loadTweets("/tweets", "GET", renderTweets);
+
+  $(".error-message").hide();
+
+  $("form").on("submit", function() {
+    event.preventDefault();
+    $(".error-message").slideUp();
+    console.log('Performing AJAX request...');
+    submitHandler($('textarea').val());
   });
+
+  $("nav button").on("click", () => {
+    $(".new-tweet").slideToggle();
+    $("textarea").focus();
+  });
+
+  // $("body").on("click", () => {
+  //   $(".error-message").slideUp();
+  // });
 });

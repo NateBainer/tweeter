@@ -3,29 +3,40 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-html {
+ html {
   box-sizing: border-box;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 /*
  * Global layout stuff
  */
-
 body {
   color: #545149;
-  background-color: #cfbbedbb;
+  background-color: #f4f1ec;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 24px;
 }
-
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
-
- .container {
-  position: absolute;
+main {
+  position: relative;
   top: 520px;
+  width: 90%;
+  margin: auto;
+}
+
+main button {
+  background-color: rgb(230, 47, 47);
+  position: fixed;
+  border: solid 1px #f4f1ec;
+  bottom: 2em;
+  right: 2em;
+  padding: .9em 1em 1.1em 1em;
+  display: flex;
+  align-content: center;
+  border-radius: 60%;
+  outline: none;
 }
