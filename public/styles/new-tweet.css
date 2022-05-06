@@ -1,10 +1,12 @@
+
+   
+/* Error message box */
 .error-message {
-  /* visibility: hidden; */
-  border: 3px solid red;
+  border: 3px solid rgba(29, 70, 67, 0.584);
   padding: 10px;
   margin-top: 1em;
   font-size: 18px;
-  color: rgb(241, 50, 50);
+  color: rgb(0, 0, 0);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -14,7 +16,7 @@
   margin-left: .8em;
 }
 
- @keyframes slide-in-top {
+@keyframes slide-in-top {
   0% {
     transform: translateY(-1000px);
     opacity: 0;
@@ -25,11 +27,11 @@
   }
 }
 
+/* Compose box */
 form {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 3em;
 }
 
 textarea {
@@ -49,6 +51,7 @@ input {
   font-family: 'Bungee', cursive, sans-serif;
   background-color: #4056A1;
   color: #ffffff;
+  outline: none;
 }
 
 .counter {

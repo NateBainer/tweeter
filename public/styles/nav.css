@@ -1,6 +1,8 @@
 nav {
   height: 120px;
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   top : 0;
   right : 0;
   left: 0;
@@ -8,28 +10,30 @@ nav {
   background-color: #4056A1;
   color: #FFFFFF;
   padding: 1.5em;
- }
+}
 
- nav #logo {
+/* Elements on the left of the nav bar */
+nav #logo {
   font-family: 'Bungee', cursive, sans-serif;
-   width: 20%;
+  width: 20%;
   display: flex;
   align-items: center;
- }
+}
 
- nav #branch {
-   margin-right: 5%;
- }
+nav #bird {
+  margin-right: 5%;
+}
 
- .new-msg {
-   height: 60px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-between;
- }
+/* Elements on the right of the nav bar */
+.new-msg {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
 
- nav button {
+nav button {
   background: transparent;
   padding: 5px;
   display: flex;
@@ -43,7 +47,7 @@ nav button:hover {
 }
 
 @keyframes bounce{
- 0% { transform: translateY(0px)  }
- 50% { transform: translateY(8px) }
- 100% { transform: translateY(0zpx) }
+  0% { transform: translateY(0px)  }
+  50% { transform: translateY(8px) }
+  100% { transform: translateY(0px) }
 }

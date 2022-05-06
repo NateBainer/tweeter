@@ -1,16 +1,19 @@
-header {
+
+   
+.your-account {
   height: 400px;
-  position: absolute;
-  top: 120px;
   left: 0;
   right: 0;
-  background-color: #23afb991;
-  background-image: url("https://www.transparenttextures.com/patterns/clean-textile.png");
+  background-color: #8e2beb3e;
+  background-image: url("https://www.transparenttextures.com/patterns/gray-floral.png");
   text-align: center;
 }
 
-header h2 {
+.your-account h2 {
   position: relative;
   bottom: 30px;
-  left: 0;
+}
+
+div.wp-downArrows.png{
+  max-width: 100%;
 }

@@ -18,29 +18,35 @@
     <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-    <script type="text/javascript" src="/scripts/composer.js"></script>
+    
   </head>
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
       <div id="logo">
-        <img id="branch" src="downloads/climbing-plant-1948358.png">
+        <img id="branch" src="/images/climbing-plant-1948358.png" style="width:8em"/>
         <span id="tweeter">tweeter</span>
       </div>
       <div class="new-msg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <span><strong>Write</strong> a new tweet</span>
-        <button type="button"><img src="/images/arrows-down.png"></button>
+        <button type="button"><img src="/images/downArrows.png" style="width:2em; height:2em"></button>
       </div>
     </nav>
 
     <header class="your-account">
       <div>
-          <img src="/images/profile-hex.png"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <style>
+          img {
+            width: 100%;
+            height: auto;
+          }
+          </style>
+          <img src="/images/IMG_3233.jpeg" style="width:13em; height:10em"/> 
+          
       </div>
       <br>
       <div>
@@ -52,35 +58,27 @@
     <main class="container">
       <section class="new-tweet">
         <div class="error-message">
-          <img src="/images/warning.png">
+          <img src="/images/warning.png" style="width: 3em; height: 3em">
           <span><strong></strong></span>
         </div>
-        <form action="/tweets" method="POST">
+        <form>
           <textarea name="text" placeholder="What are you humming about?"></textarea>
-          <input type="submit" value="Tweet">
+          <input type="submit" value="Tweet" id="tweetbutton">
+
           <span class="counter">140</span>
         </form>
       </section>
       <section>
-        <article id="tweet">
-          <header>
-            <img src="">
-            Nate Bain
-            <span class="handle">@NateBainer</span>
-          </header>
-            <div class="content">Yooooooooooo</div>
-          <footer>
-            9 days ago
-            <div class="actions">
-                <img src="/images/flag.png">
-                <img src="/images/retweet-symbol.png">
-                <img src="/images/like-symbol.png">
-            </div>
-          </footer>
-        </article>
+        <div id="tweets-container"></div>
       </section>
       <button type="button"><img src="/images/arrows-up.png"></button>
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/scripts/composer.js"></script>
+    <script src="http://timeago.yarp.com/jquery.timeago.js"></script>  
   </body>
 </html>
 

@@ -3,17 +3,25 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const escape =  function(str) {
-  let div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
+
+
+
 const renderTweets = function(tweets) {
-  return tweets.forEach(tweet => {
-    $('#tweets-container').prepend(createTweetElement(tweet));
-  });
+  if (Array.isArray(tweets)) {
+    return tweets.forEach(tweet => {
+      $('#tweets-container').prepend(createTweetElement(tweet));
+    });
+  } else {
+    return $('#tweets-container').prepend(createTweetElement(tweets));
+  }
 };
+
+// Create the tweet and its HTML
 const createTweetElement = function(tweetObj) {
+  // console.log(tweetObj);
+  // const dateOfTweet = new Date(tweetObj.created_at);
+  
+
   const element = `
     <article class="tweet">
     <header>
@@ -24,11 +32,11 @@ const createTweetElement = function(tweetObj) {
       <span class="handle">${tweetObj.user.handle}</span>
     </header>
     <div class="content">
-        ${escape(tweetObj.content.text)}
+        ${(tweetObj.content.text)}
     </div>
     <footer>
       <span class="date">
-      ${tweetObj.created_at}
+      ${$.timeago(tweetObj.created_at)}
       </span>
       <div class="actions">
         <img src="/images/flag.png">
@@ -40,6 +48,8 @@ const createTweetElement = function(tweetObj) {
   `;
   return element;
 };
+
+// Add tweets to the HTML page
 const loadTweets = (url, method, cb) => {
   $.ajax({
     url,
@@ -55,19 +65,43 @@ const loadTweets = (url, method, cb) => {
       console.log("Tweets loaded!");
     });
 };
-const refreshPage = () => {
-  $('textarea').val('');
-  $('.counter').text(140);
-  loadTweets("/tweets", "GET", renderTweets);
+
+// Add a submitted tweet to the HTML page
+const loadNewTweet = (url, method /*,cb*/) => {
+  $.ajax({
+    url,
+    method,
+  })
+    .done(data => {
+      console.log(data);
+      renderTweets(data);
+      // cb(data[data.length - 1]);
+    })
+    .fail(err => {
+      console.log('Error:', err);
+    })
+    .always(() => {
+      console.log("Tweets loaded!");
+    });
 };
 
+// Reset the compose form
+const refreshPage = (tweets) => {
+  $('textarea').val('');
+  $('.counter').text(140);
+  loadNewTweet("/tweets", "GET", renderTweets(tweets));
+};
+
+// Check if the tweet submitted isn't empty/too long
 const submitHandler = (text) => {
   if (!text) {
     $('.error-message').slideDown();
     $('.error-message strong').text("Your tweet is empty");
     return;
   } else if (text.length > 140) {
-    return $('.error-message').slideDown().text(`Your tweet is too long: ${text.length} characters`);
+    $('.error-message').slideDown();
+    $('.error-message strong').text(`Your tweet is too long: {text.length} characters`);
+    return;
   } else {
     $.ajax({
       url: '/tweets',
@@ -76,9 +110,9 @@ const submitHandler = (text) => {
         text
       }
     })
-      .done(() => {
-        console.log('Success!');
-        refreshPage();
+      .done((data) => {
+        console.log(data, "hello");
+        loadNewTweet('/tweets', 'GET');
       })
       .fail((err) => {
         console.log("Error:", err);
@@ -88,12 +122,18 @@ const submitHandler = (text) => {
       });
   }
 };
+
+// $(document).ready(function() {
+//   ('#tweetbutton').click();
+
+// })
+
 $(document).ready(function() {
   loadTweets("/tweets", "GET", renderTweets);
   $(".error-message").hide();
-  $(".new-tweet").hide();
+  // $(".new-tweet").hide();
 
-  $("form").on("submit", function() {
+  $("form").on("submit", function(event) {
     event.preventDefault();
     $(".error-message").slideUp();
     console.log('Performing AJAX request...');
@@ -102,6 +142,7 @@ $(document).ready(function() {
 
   $("nav button").on("click", () => {
     $(".new-tweet").slideToggle();
+    $(".error-message").slideUp();
     $("textarea").focus();
   });
 

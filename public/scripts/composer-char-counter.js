@@ -1,7 +1,14 @@
 $(document).ready(function() {
-
-  $('textarea').on('keypress', function() {
-    console.log(140 - $(this).val().length - 1);
+  
+  $('textarea').on('input', function() {
+    const maxCount = 140;
+    const inputLength = $(this).val().length;
+    $(this).nextAll(".counter").text(maxCount - inputLength);
+    if (maxCount - inputLength < 0) {
+      $(this).nextAll(".counter").css("color", "red");
+    } else {
+      $(this).nextAll(".counter").css("color", "#545149");
+    }
   });
-
+  
 });

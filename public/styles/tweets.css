@@ -1,13 +1,17 @@
+
+   
 .tweet {
   border: 4px solid #545149;
+  border-radius: 20px;
   padding: 1em;
-  margin-bottom: 2em;
+  margin: 1em 0em;
 }
 
 .tweet:hover {
-  box-shadow: 5px 5px lightgrey;
+  box-shadow: 7px 7px rgb(163, 162, 162);
 }
 
+/* Top part of each tweet */
 .tweet header {
   display: flex;
   justify-content: space-between;
@@ -16,10 +20,13 @@
 }
 
 .wrapper {
-  width: 160px;
+  width: 250px;
   display:  flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+.wrapper img {
+  margin-right: .5em;
 }
 
 .handle {
@@ -33,12 +40,15 @@
   right: 0;
 }
 
+ /* Content of tweet  */
 .content {
   padding: 1.5em;
   padding-left: 1em;
   border-bottom: 4px solid #545149;
+  overflow-wrap: break-word;
 }
 
+/* Bottom of tweet  */
 .tweet footer {
   padding: .5em 0em;
   margin: 0em .3em;

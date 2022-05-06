@@ -1,3 +1,5 @@
+// Behaviour of the "scroll back to top" button
+
 const backToTop = () => {
   $("html, body").animate({ scrollTop: 0 }, '500', "linear", () => {
     $(".new-tweet").slideDown();
@@ -5,12 +7,12 @@ const backToTop = () => {
   });
 };
 
-$(document).ready( ()  => {
+$(document).ready(()  => {
 
   $('main  button').hide();
 
-  $(window).scroll( () => {
-    if ($(window).scrollTop() > 400) {
+  (window).scroll(() => {
+    if ((window).scrollTop() > 400) {
       $('main  button').fadeIn();
       $('nav .new-msg').fadeOut();
     } else {
