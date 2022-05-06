@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Behaviour of the "scroll back to top" button
 
 const backToTop = () => {

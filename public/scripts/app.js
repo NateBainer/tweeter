@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -18,12 +20,9 @@ const renderTweets = function(tweets) {
 
 // Create the tweet and its HTML
 const createTweetElement = function(tweetObj) {
-  // console.log(tweetObj);
-  // const dateOfTweet = new Date(tweetObj.created_at);
-  
-
-  const element = `
-    <article class="tweet">
+ 
+  const element =
+  `<article class="tweet">
     <header>
       <div class="wrapper">
         <img src=${tweetObj.user.avatars} />
@@ -123,15 +122,9 @@ const submitHandler = (text) => {
   }
 };
 
-// $(document).ready(function() {
-//   ('#tweetbutton').click();
-
-// })
-
 $(document).ready(function() {
   loadTweets("/tweets", "GET", renderTweets);
   $(".error-message").hide();
-  // $(".new-tweet").hide();
 
   $("form").on("submit", function(event) {
     event.preventDefault();

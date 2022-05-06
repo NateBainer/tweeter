@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(document).ready(function() {
   
   $('textarea').on('input', function() {
