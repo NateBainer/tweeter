@@ -5,7 +5,8 @@ Tweeter is a simple, single-page Twitter clone.
 ## Getting Started
 
 1. Head to git@github.com:NateBainer/tweeter.
-2. Clone your repository onto your local device using ssh (the ssh is also git@github.com:NateBainer/tweeter.git).
+2. Clone your repository onto your local device using ssh (the ssh is also 
+git@github.com:NateBainer/tweeter.git).
 3. Install dependencies using the `npm install` command (located in package.json under "dependencies" and "devDependencies).
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.

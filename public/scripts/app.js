@@ -92,7 +92,8 @@ const refreshPage = (tweets) => {
 };
 
 // Check if the tweet submitted isn't empty/too long
-const submitHandler = (text) => {
+const submitHandler = (textAreaElement) => {
+  const text = textAreaElement.val();
   if (!text) {
     $('.error-message').slideDown();
     $('.error-message strong').text("Your tweet is empty");
@@ -110,6 +111,8 @@ const submitHandler = (text) => {
       }
     })
       .done((data) => {
+        textAreaElement.val("");
+        $(".counter").text("140");
         console.log(data, "hello");
         loadNewTweet('/tweets', 'GET');
       })
@@ -130,7 +133,7 @@ $(document).ready(function() {
     event.preventDefault();
     $(".error-message").slideUp();
     console.log('Performing AJAX request...');
-    submitHandler($('textarea').val());
+    submitHandler($('textarea'));
   });
 
   $("nav button").on("click", () => {
