@@ -10,6 +10,7 @@
 
 const renderTweets = function(tweets) {
   if (Array.isArray(tweets)) {
+    $('#tweets-container').html("");
     return tweets.forEach(tweet => {
       $('#tweets-container').prepend(createTweetElement(tweet));
     });
