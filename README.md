@@ -2,7 +2,7 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
-![Getting Started](./images/img.jpg)
+![Getting Started](./images/show-posted-tweet.png)
 
 ## Getting Started
 
